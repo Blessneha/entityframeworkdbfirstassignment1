@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="assign2Model1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="employeees1">
+    <Key>
+      <PropertyRef Name="empid" />
+    </Key>
+    <Property Name="empid" Type="Int32" Nullable="false" />
+    <Property Name="empname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="pid" />
+    </Key>
+    <Property Name="pid" Type="Int32" Nullable="false" />
+    <Property Name="pname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="pprice" Type="Int32" />
+    <NavigationProperty Name="product2" Relationship="Self.FK__product2__pid__625A9A57" FromRole="product" ToRole="product2" />
+  </EntityType>
+  <EntityType Name="product2">
+    <Key>
+      <PropertyRef Name="p2id" />
+    </Key>
+    <Property Name="p2id" Type="Int32" Nullable="false" />
+    <Property Name="pid" Type="Int32" />
+    <Property Name="quantity" Type="Int32" />
+    <NavigationProperty Name="product" Relationship="Self.FK__product2__pid__625A9A57" FromRole="product2" ToRole="product" />
+  </EntityType>
+  <Association Name="FK__product2__pid__625A9A57">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="product2" Type="Self.product2" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="pid" />
+      </Principal>
+      <Dependent Role="product2">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="assign2Entities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="employeees1" EntityType="Self.employeees1" />
+    <EntitySet Name="products" EntityType="Self.product" />
+    <EntitySet Name="product2" EntityType="Self.product2" />
+    <AssociationSet Name="FK__product2__pid__625A9A57" Association="Self.FK__product2__pid__625A9A57">
+      <End Role="product" EntitySet="products" />
+      <End Role="product2" EntitySet="product2" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

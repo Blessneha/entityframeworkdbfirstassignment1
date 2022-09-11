@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="assign2ModelStoreContainer" CdmEntityContainer="assign2Entities">
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="assign2Model.product">
+        <MappingFragment StoreEntitySet="product">
+          <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="pname" ColumnName="pname" />
+          <ScalarProperty Name="pprice" ColumnName="pprice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product2">
+      <EntityTypeMapping TypeName="assign2Model.product2">
+        <MappingFragment StoreEntitySet="product2">
+          <ScalarProperty Name="p2id" ColumnName="p2id" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
